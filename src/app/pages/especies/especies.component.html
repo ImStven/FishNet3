@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="justify-content-between">
+        <div class="h1">Especies</div>
+    </div>
+    <p-table [value]="especie" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15 ]">
+        <ng-template pTemplate="caption">
+            <p-button label="Registar" (click)="showAddModal()"></p-button>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>N°</th>
+                <th>Nombre Especie</th>
+                <th>Fecha</th>
+                <th>Opciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowIndex="rowIndex" let-especie>
+            <tr>
+                <td>{{rowIndex + 1}}</td>
+                <td>{{especie.nombreEspecie}}</td>
+                <td>{{especie.fechaCreacion}}</td>
+                <td>
+                    <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="showEdit(especie.id)"></button>
+                    <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                        (click)="eliminar(especie.id)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <app-add-edit-especies
+    *ngIf="displayAddEditModal" [displayAddEditModal]="displayAddEditModal"
+    [selectedEspecies]="selectedEspecie"
+    (clickClose)="hideAddModal($event)"
+    (clickAddEdit)="guardaroEditerEspeciesList($event)"
+    ></app-add-edit-especies>
+    <p-confirmDialog header="Delete"></p-confirmDialog>
+    <p-toast position="bottom-right"></p-toast>
+</div>

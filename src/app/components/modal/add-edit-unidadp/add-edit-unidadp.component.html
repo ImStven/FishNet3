@@ -1,0 +1,72 @@
+<p-dialog
+    header="{{modalType}} Unidad Productiva"
+    [(visible)]="displayAddEditModal"
+    [modal]="true"
+    
+    [draggable]="false"
+    [resizable]="false"
+    (onHide)="closeModal()"
+>
+<form [formGroup]="unidadPForm" class="unidadP-form">
+    <div class="row">
+        <div class="field">
+            <label class="block" for="nombreUnidadP">Nombre de Unidad Productiva</label>
+            <input type="text" pInputText id="nombreUnidadP" formControlName="nombreUnidadP">
+            <small class="p-error block"
+            *ngIf="
+            unidadPForm.controls['nombreUnidadP'].invalid &&
+            unidadPForm.controls['nombreUnidadP'].dirty
+            ">Field is required</small>
+        </div>
+        <div class="field">
+            <label class="block" for="coordenadas">Coordenadas</label>
+            <input type="text" pInputText id="coordenadas" formControlName="coordenadas" (keypress)="onKeyPress($event)">
+            <small class="p-error block"
+            *ngIf="
+            unidadPForm.controls['coordenadas'].invalid &&
+            unidadPForm.controls['coordenadas'].dirty
+            ">Field is required</small>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="field">
+            <label class="block" for="area">Área</label>
+            <input type="text" pInputText id="area" formControlName="area" (keypress)="onKeyPress($event)">
+            <small class="p-error block"
+            *ngIf="
+            unidadPForm.controls['area'].invalid &&
+            unidadPForm.controls['area'].dirty
+            ">Field is required</small>
+        </div>
+        <div class="field">
+            <label class="block" for="profundidad">Profundidad</label>
+            <input type="text" pInputText id="profundidad" formControlName="profundidad" (keypress)="onKeyPress($event)" >
+            <small class="p-error block"
+            *ngIf="
+            unidadPForm.controls['profundidad'].invalid &&
+            unidadPForm.controls['profundidad'].dirty
+            ">Field is required</small>
+        </div>
+    </div>
+        <div class="field">
+            <label class="block" for="observacion">Observacion</label>
+            <textarea rows="5" cols="30" pInputTextarea formControlName="observacion"></textarea>
+            <small class="p-error block"
+            *ngIf="
+            unidadPForm.controls['observacion'].invalid &&
+            unidadPForm.controls['observacion'].dirty
+            ">Field is required</small>
+        </div>
+</form>
+<ng-template pTemplate="footer">
+    <p-button
+    (click)="closeModal()"
+    label="Cancel"
+    styleClass="p-button-text"></p-button>
+    <p-button
+    (click)="addEditUnidadP()"
+    label="{{modalType}}"
+    [disabled]="unidadPForm.invalid"></p-button>
+</ng-template>
+</p-dialog>

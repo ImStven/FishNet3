@@ -1,0 +1,52 @@
+<div class="card">
+<div class="justify-content-between">
+    <div class="h1">Lote</div>
+</div>
+
+<p-table [value]="lotes" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15 ]">
+    <ng-template pTemplate="caption">
+        <p-button  label="Registrar" (click)="showAddModal()"></p-button>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>N°</th>
+            <th>Nombre Lote</th>
+            <th>Fecha de Siembra</th>
+            <th>Número Animales</th>
+            <th>Proveedor</th>
+            <th>Especie</th>
+            <th>Unidad Productiva</th>
+            <th>Opciones</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-lote let-rowIndex="rowIndex">
+        <tr>
+            <td>{{rowIndex + 1}}</td>
+            <td>{{ lote.nombreLote }}</td>
+            <td>{{ lote.fechaCreacion }}</td>
+            <td>{{ lote.numeroAnimales }}</td>
+            <td>{{ lote.proveedor.nombre }}</td>
+            <td>{{ lote.especies.nombreEspecie }}</td>
+            <td>{{ lote.unidadP.nombreUnidadP }}</td>
+            <td>
+                <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                (click)="showEdit(lote.id)"
+                ></button>
+                <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                    (click)="eliminar(lote.id)"
+                    ></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<app-add-edit-lote
+*ngIf="displayAddEditModal"
+[displayAddEditModal]="displayAddEditModal"
+[selectedLote]="selectedLote"
+(clickClose)="hideAddModal($event)"
+(clickAddEdit)="guardaroEditarLoteList($event)"
+></app-add-edit-lote>
+<p-confirmDialog header="Delete"></p-confirmDialog>
+<p-toast position="bottom-right"></p-toast>
+</div>

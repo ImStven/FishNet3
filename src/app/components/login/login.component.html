@@ -1,0 +1,23 @@
+<div class = "bootstrap-wrapper">
+  <div class = "container">
+    <div class = "card-h1">Inicio de sesión</div>
+      <div class="card-body">
+        <div class="card-form">
+          <form novalidate [formGroup]="formulario" (ngSubmit)="submit()">
+              
+                <label>Usuario <Strong style="color: red;">*</Strong> </label>
+                <input type="text" class="input-form" id = "usuario" required  placeholder="Digite su usuario" formControlName="username">
+              <br>  
+                <label>Contraseña <Strong style="color: red;">*</Strong> </label>
+                <input type="password" class="input-form"  id = "password"  required placeholder="Digite su contraseña" formControlName="password">
+              <br>
+  
+              <div class = "container-btn">
+                <button type = "submit" class="btn btn-new" >Ingresar</button>
+                <button type="reset" style = "margin-left: 20px;" mat-raised-button color="accent" class="btn btn-new">Limpiar</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

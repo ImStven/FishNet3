@@ -1,0 +1,55 @@
+.card-h1{
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background: #EC6708;
+  border-radius: 5px;
+}
+
+.card-form input{
+  border: none;
+  border-bottom: 1px solid #EC6708;
+  width: 40%;
+  background: transparent;
+  outline: none;
+  text-align: center;
+  height: 40px;
+  color: #000;
+  font-size: 17px;
+  margin: 0 auto;
+  display: block; 
+}
+
+label{
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 auto;
+  display: block; 
+}
+
+.container-btn{
+  display: flex;
+  justify-content: center;
+}
+.btn-new{
+  background: #EC6708;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+  margin-top: 10px;
+  width: 6rem;
+  height: 50px;
+  transition: all 0.50s ease;
+}
+
+.btn-new:hover{
+  background: transparent;
+  border: 1px solid #EC6708;
+  color: #EC6708;
+  transform: translateY(-5px);
+}

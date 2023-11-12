@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="justify-content-between">
+        <div class="h1">Unidad Productiva</div>
+    </div>
+
+    <p-table [value]="unidad" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15 ]">
+        <ng-template pTemplate="caption">
+            <p-button label="Registar" (click)="showAddModal()"></p-button>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>N°</th>
+                <th>Nombre de Unidad Productiva</th>
+                <th>Coordendas</th>
+                <th>Área</th>
+                <th>Profundidad</th>
+                <th>Observacion</th>
+                <th>Opciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowIndex="rowIndex" let-unidadP>
+            <tr>
+                <td>{{rowIndex + 1}}</td>
+                <td>{{unidadP.nombreUnidadP}}</td>
+                <td>{{unidadP.coordenadas}}</td>
+                <td>{{unidadP.area}}</td>
+                <td>{{unidadP.profundidad}}</td>
+                <td>{{unidadP.observacion}}</td>
+                <td>
+                    <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="showEdit(unidadP.id)"></button>
+                    <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                        (click)="eliminar(unidadP.id)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+    <app-add-edit-unidadp 
+    *ngIf="displayAddEditModal" [displayAddEditModal]="displayAddEditModal"
+    [selectedUnidadP]="selectedUnidadP" 
+    (clickClose)="hideAddModal($event)"
+    (clickAddEdit)="guardaroEditarUnidadPList($event)"></app-add-edit-unidadp>
+    <p-confirmDialog header="Delete"></p-confirmDialog>
+    <p-toast position="bottom-right"></p-toast>
+</div>
