@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="justify-content-between">
+        <div class="h1">Usuarios</div>
+    </div>
+    <p-table [value]="usuario" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15 ]">
+        <ng-template pTemplate="caption">
+            <p-button label="Registar" (click)="showAddModal()"></p-button>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>N°</th>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Roles</th>
+                <th>Opciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowIndex="rowIndex" let-usuario>
+            <tr>
+                <td>{{rowIndex + 1}}</td>
+                <td>{{usuario.username}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.apellido}}</td>
+                <td>{{usuario.telefono}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.roles.name}}</td>
+                <td>
+                    <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="showEdit(usuario.id)"></button>
+                    <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                        (click)="eliminar(usuario.id)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    
+    <app-add-edit-usuarios
+        *ngIf="displayAddEditModal"
+        [displayAddEditModal]="displayAddEditModal"
+        [selectedUsuarios]="selectedUsuarios"
+        (clickClose)="hideAddModal($event)"
+        (clickAddEdit)="guardaroEditerUsuariosList($event)"
+    ></app-add-edit-usuarios>
+    <p-confirmDialog header="Delete"></p-confirmDialog>
+<p-toast position="bottom-right"></p-toast>

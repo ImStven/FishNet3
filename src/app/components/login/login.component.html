@@ -1,23 +1,26 @@
-<div class = "bootstrap-wrapper">
-  <div class = "container">
-    <div class = "card-h1">Inicio de sesión</div>
-      <div class="card-body">
-        <div class="card-form">
-          <form novalidate [formGroup]="formulario" (ngSubmit)="submit()">
-              
-                <label>Usuario <Strong style="color: red;">*</Strong> </label>
-                <input type="text" class="input-form" id = "usuario" required  placeholder="Digite su usuario" formControlName="username">
-              <br>  
-                <label>Contraseña <Strong style="color: red;">*</Strong> </label>
-                <input type="password" class="input-form"  id = "password"  required placeholder="Digite su contraseña" formControlName="password">
-              <br>
-  
-              <div class = "container-btn">
-                <button type = "submit" class="btn btn-new" >Ingresar</button>
-                <button type="reset" style = "margin-left: 20px;" mat-raised-button color="accent" class="btn btn-new">Limpiar</button>
-              </div>
-            </form>
-        </div>
+<section class="min-h-screen flex items-center justify-center">
+  <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+    <div class="md:w-1/2 px-8 md:px-16">
+      <h2 class="font-bold text-2xl text-center text-[#EC6708]">Iniciar Sesión</h2>
+      <form class="flex flex-col gap-4"
+      novalidate [formGroup]="formulario"(ngSubmit)="submit()">
+      <div class="relative">
+      <label>Usuario<Strong style="color: red;">*</Strong></label>
+        <input class="p-2  rounded-xl border" type="text" name="username" placeholder="Usuario" id="usuario" required
+        formControlName="username">
       </div>
+        <div class="relative">
+          <label>Contaseña<Strong style="color: red;">*</Strong></label>
+          <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Password" formControlName="password"> 
+        </div>
+        <button class="bg-[#EC6708] rounded-xl text-white py-2 hover:scale-105 duration-300" type="submit">Login</button>
+        <div class="text-xs border-[#002D74] px-5 text-[#002D74]">
+          <a href="#">Forgot your password?</a>
+        </div>
+      </form>
+    </div>
+    <div class="md:block hidden w-1/2">
+      <img class="rounded-2xl" src="../../../assets/img/logo-sin-fondo.png">
     </div>
   </div>
+</section>

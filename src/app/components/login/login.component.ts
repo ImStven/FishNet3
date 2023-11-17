@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(credentials).subscribe(
         (resp: any) => {
           this.appStorage.setToken(resp.message);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/welcome']);
         },
         err => {
           console.log(err)

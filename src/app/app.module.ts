@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoteModule } from './pages/lote/lote.module';
-import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavModule } from './components/sidenav/sidenav.module';
 
@@ -17,14 +16,13 @@ import { LoginModule } from './components/login/login.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './components/services/auth/auth.service';
 import { Interceptor } from './components/interceptor/interceptor';
-
+import { UsuariosModule } from './pages/usuarios/usuarios.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
     WelcomeComponent,
 
   
@@ -39,7 +37,8 @@ import { Interceptor } from './components/interceptor/interceptor';
     UnidadProductivaModule,
     ProveedorModule,
     EspeciesModule,
-    LoginModule
+    LoginModule,
+    UsuariosModule
 
 
 

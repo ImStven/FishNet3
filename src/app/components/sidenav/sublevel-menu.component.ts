@@ -48,7 +48,7 @@ import { fadeInOut, INavbarData } from './helper';
       </li>
     </ul>
   `,
-  styleUrls: ['./sidenav.component.scss'],
+  styleUrls: ['./sidenav.component.css'],
   animations: [
     fadeInOut,
     trigger('submenu', [
