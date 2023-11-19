@@ -5,6 +5,7 @@ import { INavbarData, fadeInOut } from './helper';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { AuthService } from '../services/auth/auth.service';
 
+
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;

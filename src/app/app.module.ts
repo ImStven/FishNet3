@@ -20,12 +20,12 @@ import { UsuariosModule } from './pages/usuarios/usuarios.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
 
-  
   ],
   imports: [
     SidenavModule,
@@ -38,11 +38,7 @@ import { UsuariosModule } from './pages/usuarios/usuarios.module';
     ProveedorModule,
     EspeciesModule,
     LoginModule,
-    UsuariosModule
-
-
-
-
+    UsuariosModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     AuthService],

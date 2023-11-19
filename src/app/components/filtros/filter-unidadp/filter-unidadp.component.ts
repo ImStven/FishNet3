@@ -8,8 +8,18 @@ import { UnidadProductivaService } from '../../services/unidad-productiva.servic
   templateUrl: './filter-unidadp.component.html',
   styleUrls: ['./filter-unidadp.component.css']
 })
-export class FilterUnidadpComponent {
+export class FilterUnidadpComponent implements OnInit {
+
+selectedUnidadP: string;
+nombre: string [] = [];
+subscriptions: Subscription[] = [];
+unidadPSubscription: Subscription = new Subscription();
 
 
+
+@Output() selectnombreUnidadP: EventEmitter<string> = new EventEmitter<string>();
+ngOnInit(): void {
+  
+}
 
 }
