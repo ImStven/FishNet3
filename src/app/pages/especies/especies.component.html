@@ -1,28 +1,28 @@
 <div class="card">
     <div class="justify-content-between">
-        <div class="h1">Especies</div>
+        <div class="h1 bg-gray-500 border-3 border-gray-400">Especies</div>
     </div>
-    <p-table [value]="especie" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15 ]">
+    <p-table class="border-3 border-gray-400" [value]="especie" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15 ]">
         <ng-template pTemplate="caption">
-            <p-button label="Registar" (click)="showAddModal()"></p-button>
+            <p-button class="bg-[#EC6708] rounded-xl text-white py-2 px-2"  label="Registrar" (click)="showAddModal()"></p-button>
         </ng-template>
         <ng-template pTemplate="header">
-            <tr>
-                <th>N°</th>
-                <th>Nombre Especie</th>
-                <th>Fecha</th>
-                <th>Opciones</th>
+            <tr class="border-2 border-gray-300 w-6/12">
+                <th class="border-2">N°</th>
+                <th class="border-2">Nombre Especie</th>
+                <th class="border-2">Fecha</th>
+                <th class="border-2">Opciones</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-rowIndex="rowIndex" let-especie>
-            <tr>
-                <td>{{rowIndex + 1}}</td>
-                <td>{{especie.nombreEspecie}}</td>
-                <td>{{especie.fechaCreacion}}</td>
-                <td>
-                    <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+            <tr class="hover:bg-gray-300 cursor-pointer duration-300">
+                <td class="border-2">{{rowIndex + 1}}</td>
+                <td class="border-2">{{especie.nombreEspecie}}</td>
+                <td class="border-2">{{especie.fechaCreacion}}</td>
+                <td class="border-2">
+                    <button pButton icon="pi pi-pencil" class=" bg-cyan-600 text-white p-button-rounded mr-2"
                         (click)="showEdit(especie.id)"></button>
-                    <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                    <button pButton icon="pi pi-trash" class=" bg-red-500 text-white p-button-rounded p-button-danger"
                         (click)="eliminar(especie.id)"></button>
                 </td>
             </tr>

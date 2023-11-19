@@ -5,7 +5,7 @@
 
     <p-table [value]="proveedores" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15 ]">
         <ng-template pTemplate="caption">
-            <p-button label="Registar" (click)="showAddModal()"></p-button>
+            <p-button class="bg-[#EC6708] rounded-xl text-white py-2.5 px-2 hover:scale-105 duration-300"  label="Registrar" (click)="showAddModal()"></p-button>
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
@@ -35,9 +35,9 @@
                 <td>{{proveedor.tipoIdentificacion.tipoIdentificacion }}</td>
                 <td>{{proveedor.numeroIdentificacion }}</td>
                 <td>
-                    <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                    <button pButton icon="pi pi-pencil" class="bg-cyan-600 text-white p-button-rounded mr-2"
                         (click)="showEdit(proveedor.id)"></button>
-                    <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                    <button pButton icon="pi pi-trash" class="bg-red-500 text-white p-button-rounded p-button-danger"
                         (click)="eliminar(proveedor.id)"></button>
                 </td>
             </tr>

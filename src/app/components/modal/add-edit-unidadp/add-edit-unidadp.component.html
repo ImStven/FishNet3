@@ -11,7 +11,7 @@
     <div class="row">
         <div class="field">
             <label class="block" for="nombreUnidadP">Nombre de Unidad Productiva</label>
-            <input type="text" pInputText id="nombreUnidadP" formControlName="nombreUnidadP">
+            <input class="p-2 rounded-xl border"type="text" pInputText id="nombreUnidadP" formControlName="nombreUnidadP">
             <small class="p-error block"
             *ngIf="
             unidadPForm.controls['nombreUnidadP'].invalid &&
@@ -20,7 +20,7 @@
         </div>
         <div class="field">
             <label class="block" for="coordenadas">Coordenadas</label>
-            <input type="text" pInputText id="coordenadas" formControlName="coordenadas" (keypress)="onKeyPress($event)">
+            <input class="p-2 rounded-xl border"type="text" pInputText id="coordenadas" formControlName="coordenadas" (keypress)="onKeyPress($event)">
             <small class="p-error block"
             *ngIf="
             unidadPForm.controls['coordenadas'].invalid &&
@@ -32,7 +32,7 @@
     <div class="row">
         <div class="field">
             <label class="block" for="area">Área</label>
-            <input type="text" pInputText id="area" formControlName="area" (keypress)="onKeyPress($event)">
+            <input class="p-2 rounded-xl border"type="text" pInputText id="area" formControlName="area" (keypress)="onKeyPress($event)">
             <small class="p-error block"
             *ngIf="
             unidadPForm.controls['area'].invalid &&
@@ -41,7 +41,7 @@
         </div>
         <div class="field">
             <label class="block" for="profundidad">Profundidad</label>
-            <input type="text" pInputText id="profundidad" formControlName="profundidad" (keypress)="onKeyPress($event)" >
+            <input class="p-2 rounded-xl border"type="text" pInputText id="profundidad" formControlName="profundidad" (keypress)="onKeyPress($event)" >
             <small class="p-error block"
             *ngIf="
             unidadPForm.controls['profundidad'].invalid &&

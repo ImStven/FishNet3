@@ -1,4 +1,4 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''" *ngIf="authService.isAuthenticated()">   
+<div class="sidenav border-3 border-gray-600" [ngClass]="collapsed ? 'sidenav-collapsed': ''" *ngIf="authService.isAuthenticated()">   
     <div class="logo-container">
         <button class="logo" (click)="toggleCollapse()">F</button>
         <div class="logo-text" @fadeInOut *ngIf="collapsed">FishNet</div>
@@ -44,7 +44,6 @@
             <li class="sidenav-nav-item">
                 <a class="sidenav-nav-link" (click)="logout()">
                   <i class="sidenav-link-icon fas fa-sign-out-alt"></i>
-                  <span class="sidenav-link-text">Salir</span>
                 </a>
               </li>
         </ul>

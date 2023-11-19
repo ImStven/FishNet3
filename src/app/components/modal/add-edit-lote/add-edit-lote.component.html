@@ -1,5 +1,5 @@
 <p-dialog
-    header="{{modalType}}Lote"
+    header="{{modalType}} Lote"
     [(visible)]="displayAddEditModal"
     [modal]="true"
     
@@ -12,7 +12,7 @@
 <div class="row">
     <div class="field">
     <label class="block" for="nombreLote">Nombre Lote</label>
-    <input type="text" pInputText id="nombreLote" formControlName="nombreLote">
+    <input class="p-2 rounded-xl border"class="p-2 rounded-xl border" type="text" pInputText id="nombreLote" formControlName="nombreLote">
     <small class="p-error block"
     *ngIf="
     loteForm.controls['nombreLote'].invalid &&
@@ -22,7 +22,7 @@
 
 <div class="field">
     <label class="block" for="numeroAnimales">Numero de Animales</label>
-    <input name="numeroAnimales" type="text" pInputText id="numeroAnimales" formControlName="numeroAnimales">
+    <input class="p-2 rounded-xl border"class="p-2 rounded-xl border" name="numeroAnimales" type="text" pInputText id="numeroAnimales" formControlName="numeroAnimales">
     <small class="p-error block"
     *ngIf="
     loteForm.controls['numeroAnimales'].invalid &&
@@ -34,7 +34,7 @@
 <div class="row">
 <div class="field" >
     <label for="proveedor">Proveedor</label>
-    <select  name="proveedor" type="text" formControlName="proveedor">
+    <select class="p-2 rounded-xl border"  name="proveedor" type="text" formControlName="proveedor">
         <option >Seleccionar una Opcion</option>
         <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{proveedor.nombre}}</option>
     </select>
@@ -43,7 +43,7 @@
 
 <div class="field">
     <label for="especies">Especies</label>
-    <select name="especies" type="text" formControlName="especies">
+    <select class="p-2 rounded-xl border" name="especies" type="text" formControlName="especies">
         <option>Seleccionar una Opcion</option>
         <option *ngFor="let especie of especies" [value]="especie.id">{{especie.nombreEspecie}}</option>
     </select>
@@ -52,7 +52,7 @@
 <div class="row">
 <div class="field">
     <label for="unidadProductiva">Unidad Productiva</label>
-    <select class="select" name="unidadProductiva" type="text" formControlName="unidadProductiva">
+    <select class="p-2 rounded-xl border" class="select" name="unidadProductiva" type="text" formControlName="unidadProductiva">
         <option>Seleccionar una Opcion</option>
         <option *ngFor="let unidadP of unidadProductiva" [value]="unidadP.id">{{unidadP.nombreUnidadP}}</option>
     </select>
