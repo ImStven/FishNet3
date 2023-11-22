@@ -20,6 +20,11 @@ export const navbarData: INavbarData[] = [
         routeLink: 'especies',
         icon: 'fa-solid fa-e',
         label:'Especies' 
+    },
+    {
+        routeLink: 'inventario',
+        icon: 'fa-solid fa-i',
+        label:'Inventario' 
     }
     
 ]

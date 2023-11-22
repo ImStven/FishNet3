@@ -11,7 +11,7 @@
     <div class="row">
         <div class="field">
             <label class="block" for="nombreUnidadP">Nombre de Unidad Productiva</label>
-            <input class="p-2 rounded-xl border"type="text" pInputText id="nombreUnidadP" formControlName="nombreUnidadP">
+            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="nombreUnidadP" formControlName="nombreUnidadP">
             <small class="p-error block"
             *ngIf="
             unidadPForm.controls['nombreUnidadP'].invalid &&
@@ -20,7 +20,7 @@
         </div>
         <div class="field">
             <label class="block" for="coordenadas">Coordenadas</label>
-            <input class="p-2 rounded-xl border"type="text" pInputText id="coordenadas" formControlName="coordenadas" (keypress)="onKeyPress($event)">
+            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="coordenadas" formControlName="coordenadas" (keypress)="onKeyPress($event)">
             <small class="p-error block"
             *ngIf="
             unidadPForm.controls['coordenadas'].invalid &&
@@ -32,7 +32,7 @@
     <div class="row">
         <div class="field">
             <label class="block" for="area">Área</label>
-            <input class="p-2 rounded-xl border"type="text" pInputText id="area" formControlName="area" (keypress)="onKeyPress($event)">
+            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="area" formControlName="area" (keypress)="onKeyPress($event)">
             <small class="p-error block"
             *ngIf="
             unidadPForm.controls['area'].invalid &&
@@ -41,7 +41,7 @@
         </div>
         <div class="field">
             <label class="block" for="profundidad">Profundidad</label>
-            <input class="p-2 rounded-xl border"type="text" pInputText id="profundidad" formControlName="profundidad" (keypress)="onKeyPress($event)" >
+            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="profundidad" formControlName="profundidad" (keypress)="onKeyPress($event)" >
             <small class="p-error block"
             *ngIf="
             unidadPForm.controls['profundidad'].invalid &&
@@ -51,7 +51,7 @@
     </div>
         <div class="field">
             <label class="block" for="observacion">Observacion</label>
-            <textarea rows="5" cols="30" pInputTextarea formControlName="observacion"></textarea>
+            <textarea class="p-2 rounded-xl border border border-gray-500" rows="5" cols="30" pInputTextarea formControlName="observacion"></textarea>
             <small class="p-error block"
             *ngIf="
             unidadPForm.controls['observacion'].invalid &&
@@ -61,6 +61,7 @@
 </form>
 <ng-template pTemplate="footer">
     <p-button
+    class="bg-gray-100 rounded-xl py-3 px-2 mr-2"
     (click)="closeModal()"
     label="Cancel"
     styleClass="p-button-text"></p-button>

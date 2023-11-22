@@ -16,6 +16,7 @@ export class UnidadProductivaComponent implements OnInit, OnDestroy {
   selectedUnidadP: any = null;
   subscriptions: Subscription[] = [];
   UpSubscription: Subscription = new Subscription();
+  fechaFiltro:Date | null = null;
 
 
   constructor(
@@ -47,9 +48,13 @@ export class UnidadProductivaComponent implements OnInit, OnDestroy {
 
   eliminar(id: number): void {
     this.confirmationService.confirm({
-      message: '¿Quieres Eliminar este Registro?',
+        message: '¿Quieres Eliminar este Registro?',
       header: 'Confirmacion de Eliminar Registro',
       icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
+      acceptButtonStyleClass: 'bg-green-500 text-white py-2 px-2',
+      rejectButtonStyleClass: 'bg-red-500 py-2 px-2 text-white mr-2',
       accept: () => {
         this.unidadproductivaService.eliminarUnidadProductiva(id).subscribe(
           response => {
@@ -83,5 +88,21 @@ export class UnidadProductivaComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
+
+  filtro(){
+      if(this.fechaFiltro){
+        this.unidad = this.unidad.filter(u => u.fechaCreacion === this.fechaFiltro)
+      }else {
+        this.obtenerUnidadProductiva()
+      }
+    }
+
+
+    borrarBusqueda() {
+      // Restaura la lista completa de unidades
+      this.obtenerUnidadProductiva();
+      // Limpia la fecha de filtro
+      this.fechaFiltro = null;
+    }
 }
 

@@ -64,9 +64,10 @@ export class AddEditEspeciesComponent implements OnInit, OnChanges {
         this.clickAddEdit.emit(response);
         this.closeModal();
         const msg = this.modalType === 'Guardar'? 'Registro Guardado': 'Registro Actualizado';
-        this.messageService.add({severity: 'success', summary: 'Success', detail: msg});
+        this.messageService.add({severity: 'success', summary: 'Exito', detail: msg});
       },
-      error => {
+      error => { 
+        const msg = this.modalType === 'Guardar'? 'No puede Guardar este Registro': 'No puede Actulizar este Registro';
         this.messageService.add({severity: 'error', summary: 'Error', detail: error})
       }
     )

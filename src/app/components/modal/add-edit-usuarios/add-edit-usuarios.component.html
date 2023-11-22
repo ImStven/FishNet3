@@ -11,7 +11,7 @@
     <div class="row">
         <div class="field">
             <label class="block" for="username">Nombre Especie</label>
-            <input class="p-2 rounded-xl border"type="text" pInputText id="username" formControlName="username">
+            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="username" formControlName="username">
             <small class="p-error block"
             *ngIf="
             form.controls['username'].invalid &&
@@ -21,7 +21,7 @@
 
         <div class="field">
             <label class="block" for="nombre">Nombre Especie</label>
-            <input class="p-2 rounded-xl border"type="text" pInputText id="nombre" formControlName="nombre">
+            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="nombre" formControlName="nombre">
             <small class="p-error block"
             *ngIf="
             form.controls['nombre'].invalid &&
@@ -33,7 +33,7 @@
     <div class="row">
         <div class="field">
             <label class="block" for="apellido">Apellido</label>
-            <input class="p-2 rounded-xl border"type="text" pInputText id="apellido" formControlName="apellido">
+            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="apellido" formControlName="apellido">
             <small class="p-error block"
             *ngIf="
             form.controls['apellido'].invalid &&
@@ -43,7 +43,7 @@
 
         <div class="field">
             <label class="block" for="telefono">Teléfono</label>
-            <input class="p-2 rounded-xl border"type="text" pInputText id="telefono" formControlName="telefono">
+            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="telefono" formControlName="telefono">
             <small class="p-error block"
             *ngIf="
             form.controls['telefono'].invalid &&
@@ -55,7 +55,7 @@
     <div class="row">
                 <div class="field">
             <label class="block" for="email">Correo</label>
-            <input class="p-2 rounded-xl border"type="text" pInputText id="email" formControlName="email">
+            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="email" formControlName="email">
             <small class="p-error block"
             *ngIf="
             form.controls['email'].invalid &&
@@ -80,6 +80,7 @@
 </form>
 <ng-template pTemplate="footer">
     <p-button
+    class="bg-gray-100 rounded-xl py-3 px-2 mr-2"
     (click)="closeModal()"
     label="Cancel"
     styleClass="p-button-text"></p-button>

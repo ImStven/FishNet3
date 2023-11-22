@@ -93,8 +93,9 @@ export class AddEditUsuariosComponent implements OnInit, OnChanges {
         this.messageService.add({severity: 'success', summary: 'Success', detail: msg});
         console.log(this.modalType);
       },
-      error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: error});
+      error => { 
+        const msg = this.modalType === 'Guardar'? 'No puede Guardar este Registro': 'No puede Actulizar este Registro';
+        this.messageService.add({severity: 'error', summary: 'Error', detail: error})
       }
     )
   }

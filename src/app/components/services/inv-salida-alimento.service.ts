@@ -20,12 +20,13 @@ export class InvSalidaAlimentosService {
     return this.http.get<SalidaAlimentos>(this.apiUrl + `/${id}`);
   }
 
-  agregarSalidaAlimentos(salidaAlimentos:any): Observable<any> {
-    return this.http.post(this.apiUrl, salidaAlimentos);
-  }
-
-  actualizarSalidaAlimentos(id: number, salidaAlimentos: SalidaAlimentos): Observable<any> {
-    return this.http.put(this.apiUrl + `/${id}`, salidaAlimentos);
+  addEditSalida(postData: any, select: any){
+    
+    if(!select){
+      return this.http.post(this.apiUrl + `/registrar`, postData);
+    }else {
+      return this.http.put(this.apiUrl + `/${select}`, postData);
+    }
   }
 
   eliminarSalidaAlimentos(id: number): Observable<any> {

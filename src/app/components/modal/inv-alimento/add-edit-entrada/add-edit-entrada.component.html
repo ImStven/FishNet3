@@ -1,0 +1,72 @@
+<p-dialog header="{{modalType}}Entrada de Alimentos" [(visible)]="displayAddEditModal" [modal]="true" [draggable]="false"
+    [resizable]="false" (onHide)="closeModal()">
+    <form [formGroup]="form" class="entrada-form">
+
+        <div class="row">
+            <div class="field">
+                <label class="block" for="numeroFactura">Numero de Factura</label>
+                <input class="p-2 rounded-xl border border border-gray-500" type="text" pInputText id="numeroFactura" formControlName="numeroFactura">
+                <small class="p-error block" *ngIf="
+                form.controls['numeroFactura'].invalid &&
+                form.controls['numeroFactura'].dirty
+                ">Campo Obligatorio*</small>
+            </div>
+            
+            <div class="field">
+                <label class="block" for="fechaVencimiento">Fecha de Siembra</label>
+                <input class="p-2 rounded-xl border border border-gray-500" type="date" pInputText id="fechaVencimiento" formControlName="fechaVencimiento">
+                <small class="p-error block" *ngIf="
+            form.controls['fechaVencimiento'].invalid &&
+            form.controls['fechaVencimiento'].dirty
+            ">Campo Obligatorio*</small>
+            </div>
+            </div>
+            <div class="row">
+            <div class="field">
+                <label class="block" for="registroIca">Registro ICA</label>
+                <input class="p-2 rounded-xl border border border-gray-500" name="registroIca" type="text" pInputText id="registroIca"
+                    formControlName="registroIca">
+                <small class="p-error block" *ngIf="
+                    form.controls['registroIca'].invalid &&
+                    form.controls['registroIca'].dirty
+                    ">Campo Obligatorio*</small>
+            </div>        
+
+            <div class="field">
+                <label class="block" for="numeroKilos">Numero de Kilos</label>
+                <input class="p-2 rounded-xl border border border-gray-500" name="numeroKilos" type="text" pInputText id="numeroKilos"
+                    formControlName="numeroKilos">
+                <small class="p-error block" *ngIf="
+                    form.controls['numeroKilos'].invalid &&
+                    form.controls['numeroKilos'].dirty
+                    ">Campo Obligatorio*</small>
+            </div>      
+              
+            </div>
+            <div class="row">
+            <div class="field">
+                <label for="proveedor">Proveedor</label>
+                <select class="select" name="proveedor" type="text" formControlName="proveedor">
+                    <option>Seleccionar una Opcion</option>
+                    <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{proveedor.razonSocial}}</option>
+                </select>
+            </div>           
+
+            <div class="field">
+                <label for="tipoAlimento">Tipo de Alimento</label>
+                <select class="select" name="tipoAlimento" type="text" formControlName="tipoAlimento">
+                    <option>Seleccionar una Opcion</option>
+                    <option *ngFor="let alimento of tipoAlimentos" [value]="alimento.id">{{alimento.tipoAlimento}}</option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <ng-template pTemplate="footer">
+            <p-button
+    class="bg-gray-100 rounded-xl py-3 px-2 mr-2"
+    (click)="closeModal()"
+    label="Cancel"
+    styleClass="p-button-text"></p-button>
+        <p-button (click)="addEditEntrada()" label="{{modalType}}" [disabled]="form.invalid"></p-button>
+    </ng-template>
+</p-dialog>

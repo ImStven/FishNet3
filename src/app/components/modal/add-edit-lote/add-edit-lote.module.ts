@@ -10,7 +10,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ToastModule } from 'primeng/toast';
 import { AddEditLoteComponent } from './add-edit-lote.component';
-import { TreeSelectModule } from 'primeng/treeselect';
+
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { TreeSelectModule } from 'primeng/treeselect';
     InputNumberModule,
     InputTextareaModule,
     ToastModule,
-    TreeSelectModule
+
 
   ],
   exports:[AddEditLoteComponent]

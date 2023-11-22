@@ -44,9 +44,13 @@ export class UsuariosComponent {
   }
   eliminar(id: number): void{
     this.confirmationService.confirm({
-      message: '¿Quieres Eliminar este Registro?',
+        message: '¿Quieres Eliminar este Registro?',
       header: 'Confirmacion de Eliminar Registro',
       icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
+      acceptButtonStyleClass: 'bg-green-500 text-white py-2 px-2',
+      rejectButtonStyleClass: 'bg-red-500 py-2 px-2 text-white mr-2',
       accept: () => {
         this.usuariosService.eliminarUsuarios(id).subscribe(
           response => {

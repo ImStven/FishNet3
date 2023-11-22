@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthService } from './components/services/auth/auth.service';
+import { Router } from '@angular/router';
+import { Usuarios } from './components/models/usuarios';
 
 
 interface SideNavToggle {
@@ -14,11 +17,24 @@ interface SideNavToggle {
 export class AppComponent {
   title = 'FishNet';
 
+  usuarios!: Usuarios;
+
   isSideNavCollapsed = false;
   screenWidth = 0;
+
+
+  constructor(
+    public router: Router,
+    public authService: AuthService
+    ) {}
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

@@ -5,8 +5,9 @@ export class EntradaAlimentos {
 id: number;
 fechaCreacion: Date;
 fechaVencimiento:Date;
-numeroFactura: number;
-registroIca: string;
+numeroFactura: string;
+registroIca: number;
+kilosInicial: number;
 numeroKilos: number;
 tipoAlimento: TipoAlimento;
 proveedor: Proveedor;

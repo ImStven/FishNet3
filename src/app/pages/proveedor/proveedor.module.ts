@@ -30,8 +30,6 @@ import { ProveedorComponent } from './proveedor.component';
     FormsModule,
     DialogModule,
     AddEditProveedorModule
-
-
   ],
 
   providers: [ConfirmationService,

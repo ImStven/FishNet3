@@ -20,12 +20,13 @@ export class TipoProveedorService {
     return this.http.get<TipoProveedor>(this.apiUrl + `/${id}`);
   }
 
-  agregarTipoProveedor(tipoProveedor:any): Observable<any> {
-    return this.http.post(this.apiUrl, tipoProveedor);
-  }
 
-  actualizarTipoProveedor(id: number, tipoProveedor: TipoProveedor): Observable<any> {
-    return this.http.put(this.apiUrl + `/${id}`, tipoProveedor);
+  addEditProveedor(postData: any, select: any){
+    if(!select){
+      return this.http.get<TipoProveedor>(this.apiUrl, postData);
+    }else {
+      return this.http.put(this.apiUrl + `/${select}`, postData);
+    }
   }
 
   eliminarTipoProveedor(id: number): Observable<any> {

@@ -28,9 +28,10 @@ export class AddEditLoteComponent implements OnInit, OnChanges {
   @Output() clickAddEdit: EventEmitter<any> = new EventEmitter<any>();
   modalType = "Guardar";
 
-  loteForm = this.fb.group({
+  form = this.fb.group({
     nombreLote: ["", Validators.required],
     numeroAnimales: ["", Validators.required],
+    fechaSiembra:["", Validators.required],
     proveedor: [0, Validators.required],
     especies: [0, Validators.required],
     unidadProductiva: [0, Validators.required]
@@ -57,14 +58,14 @@ export class AddEditLoteComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     if (this.selectedLote) {
       this.modalType = 'Actualizar';
-      this.loteForm.patchValue(this.selectedLote);
+      this.form.patchValue(this.selectedLote);
     } else {
-      this.loteForm.reset();
+      this.form.reset();
       this.modalType = 'Guardar';
     }
   }
   closeModal(){
-    this.loteForm.reset();
+    this.form.reset();
     this.clickClose.emit(true);
   }
 
@@ -72,11 +73,11 @@ export class AddEditLoteComponent implements OnInit, OnChanges {
     if (this.displayAddEditModal && this.selectedLote) {
       this.loteService.obtenerLotePorId(this.selectedLote).subscribe(
         response =>{
-          this.loteForm.get('nombreLote')?.setValue(response.nombreLote);
-          this.loteForm.get('numeroAnimales')?.setValue(response.numeroAnimales);
-          this.loteForm.controls['proveedor'].setValue(response.proveedor.id);
-          this.loteForm.controls['especies'].setValue(response.especies.id);
-          this.loteForm.controls['unidadProductiva'].setValue(response.unidadP.id);
+          this.form.get('nombreLote')?.setValue(response.nombreLote);
+          this.form.get('numeroAnimales')?.setValue(response.numeroAnimales);
+          this.form.controls['proveedor'].setValue(response.proveedor.id);
+          this.form.controls['especies'].setValue(response.especies.id);
+          this.form.controls['unidadProductiva'].setValue(response.unidadProductiva.id);
 
         }
       )
@@ -85,16 +86,17 @@ export class AddEditLoteComponent implements OnInit, OnChanges {
 
   addEditLote(){
     const loteData = {
-      nombreLote: this.loteForm.get('nombreLote')?.value,
-      numeroAnimales: this.loteForm.get('numeroAnimales')?.value,
+      nombreLote: this.form.get('nombreLote')?.value,
+      fechaSiembra: this.form.get('fechaSiembra')?.value,
+      numeroAnimales: this.form.get('numeroAnimales')?.value,
       proveedor: {
-        id: this.loteForm.get('proveedor')?.value
+        id: this.form.get('proveedor')?.value
       },
       especies: {
-        id: this.loteForm.get('especies')?.value
+        id: this.form.get('especies')?.value
       }, 
       unidadProductiva: {
-        id: this.loteForm.get('unidadProductiva')?.value
+        id: this.form.get('unidadProductiva')?.value
       }
     }
     
@@ -108,8 +110,9 @@ export class AddEditLoteComponent implements OnInit, OnChanges {
         
       },
       
-      error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: error});
+      error => { 
+        const msg = this.modalType === 'Guardar'? 'No puede Guardar este Registro': 'No puede Actulizar este Registro';
+        this.messageService.add({severity: 'error', summary: 'Error', detail: error})
       }
     )
   }

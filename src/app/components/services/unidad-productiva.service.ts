@@ -34,5 +34,4 @@ export class UnidadProductivaService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
-
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { EntradaAlimentos } from '../models/inv-entrada-alimento'
 
@@ -21,14 +21,14 @@ export class InvEntradaAlimentoService {
     return this.http.get<EntradaAlimentos>(this.apiUrl + `/${id}`);
   }
 
-  agregarEntradaAlimentos(entradaAlimentos:any): Observable<any> {
-    return this.http.post(this.apiUrl, entradaAlimentos);
+  addEditEntrada(postData: any, select: any){
+    
+    if(!select){
+      return this.http.post(this.apiUrl + `/registrar`, postData);
+    }else {
+      return this.http.put(this.apiUrl + `/${select}`, postData);
+    }
   }
-
-  actualizarEntradaAlimentos(id: number, entradaAlimentos: EntradaAlimentos): Observable<any> {
-    return this.http.put(this.apiUrl + `/${id}`, entradaAlimentos);
-  }
-
   eliminarEntradaAlimentos(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }

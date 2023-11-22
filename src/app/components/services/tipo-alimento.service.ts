@@ -20,12 +20,20 @@ export class TipoAlimentoService {
     return this.http.get<TipoAlimento>(this.apiUrl + `/${id}`);
   }
 
-  agregarTipoAlimento(tipoAlimento:any): Observable<any> {
-    return this.http.post(this.apiUrl, tipoAlimento);
-  }
+  // agregarTipoAlimento(tipoAlimento:any): Observable<any> {
+  //   return this.http.post(this.apiUrl, tipoAlimento);
+  // }
 
-  actualizarTipoAlimento(id: number, tipoAlimento: TipoAlimento): Observable<any> {
-    return this.http.put(this.apiUrl + `/${id}`, tipoAlimento);
+  // actualizarTipoAlimento(id: number, tipoAlimento: TipoAlimento): Observable<any> {
+  //   return this.http.put(this.apiUrl + `/${id}`, tipoAlimento);
+  // }
+
+  addEditT_Alimento(postData: any, select: any){
+    if(!select){
+      return this.http.get<TipoAlimento>(this.apiUrl, postData);
+    }else {
+      return this.http.put(this.apiUrl + `/${select}`, postData);
+    }
   }
 
   eliminarTipoAlimento(id: number): Observable<any> {

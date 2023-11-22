@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    RouterModule
   ],
   exports: [LoginComponent]
 })

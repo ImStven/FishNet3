@@ -16,7 +16,8 @@ export class LoteComponent implements OnInit, OnDestroy {
   selectedLote: any = null;
   subscriptions: Subscription[] = [];
   LSubscription: Subscription = new Subscription();
-  
+  fechaFiltro:Date | null = null;
+
   constructor(
     private loteService: LoteService,
     private confirmationService: ConfirmationService,
@@ -43,11 +44,15 @@ export class LoteComponent implements OnInit, OnDestroy {
       this.lotes[loteIndex] = newData;
     }
   }
-  eliminar(id: number): void {
+  eliminar(id: number): void{
     this.confirmationService.confirm({
-      message: '¿Quieres Eliminar este Registro?',
+        message: '¿Quieres Eliminar este Registro?',
       header: 'Confirmacion de Eliminar Registro',
       icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
+      acceptButtonStyleClass: 'bg-green-500 text-white py-2 px-2',
+      rejectButtonStyleClass: 'bg-red-500 py-2 px-2 text-white mr-2',
       accept: () => {
         this.loteService.eliminarLote(id).subscribe(
           response => {
@@ -59,8 +64,7 @@ export class LoteComponent implements OnInit, OnDestroy {
           }
         )
       },
-    }
-    )
+    })
   };
 
   showEdit(id: number) {
@@ -74,11 +78,29 @@ export class LoteComponent implements OnInit, OnDestroy {
       this.lotes = lote;
       console.log(this.lotes);
 
+      // this.lotesFiltro = [...lote]
+
     });
     this.subscriptions.push(this.LSubscription)
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  filtro(){
+    if(this.fechaFiltro){
+      this.lotes = this.lotes.filter(u => u.fechaCreacion === this.fechaFiltro)
+    }else {
+      this.obtenerLote()
+    }
+  }
+
+
+  borrarBusqueda() {
+    // Restaura la lista completa de unidades
+    this.obtenerLote();
+    // Limpia la fecha de filtro
+    this.fechaFiltro = null;
   }
 }

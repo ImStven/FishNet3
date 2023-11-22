@@ -16,6 +16,7 @@ export class ProveedorComponent implements OnInit, OnDestroy {
   selectedProveedor: any = null;
   subscriptions: Subscription[] = [];
   PSubscription: Subscription = new Subscription();
+  fechaFiltro:Date | null = null;
 
   constructor(
     private proveedorService: ProveedorService,
@@ -47,9 +48,13 @@ guardaroEditarProveedorList(newData: any){
 
 eliminar(id: number): void{
   this.confirationService.confirm({
-    message: '¿Quieres Eliminar este Registro?',
+      message: '¿Quieres Eliminar este Registro?',
       header: 'Confirmacion de Eliminar Registro',
       icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
+      acceptButtonStyleClass: 'bg-green-500 text-white py-2 px-2',
+      rejectButtonStyleClass: 'bg-red-500 py-2 px-2 text-white mr-2',
       accept: () => {
         this.proveedorService.eliminarProveedor(id).subscribe(
           response => {
@@ -82,5 +87,21 @@ eliminar(id: number): void{
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  filtro(){
+    if(this.fechaFiltro){
+      this.proveedores = this.proveedores.filter(u => u.fechaCreacion === this.fechaFiltro)
+    }else {
+      this.obtenerProveedor()
+    }
+  }
+
+
+  borrarBusqueda() {
+    // Restaura la lista completa de unidades
+    this.obtenerProveedor();
+    // Limpia la fecha de filtro
+    this.fechaFiltro = null;
   }
 }

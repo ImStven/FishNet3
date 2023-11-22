@@ -6,9 +6,12 @@ export class Lote {
     id: number;
     nombreLote: string;
     fechaCreacion: Date;
+    fechaRegistro: Date;
+    diasDeSiembra: number;
+    animalesInicial: number;
     numeroAnimales: string;
     proveedor: Proveedor;
-    unidadP: UnidadProductiva;
+    unidadProductiva: UnidadProductiva;
     especies: Especies;
 
     }

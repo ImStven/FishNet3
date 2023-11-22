@@ -20,12 +20,12 @@ export class LoteService {
     return this.http.get<Lote>(this.apiUrl + `/${id}`);
   }
 
-  addEditLote(postData: any, selectL: any){
+  addEditLote(postData: any, select: any){
     
-    if(!selectL){
+    if(!select){
       return this.http.post(this.apiUrl, postData);
     }else {
-      return this.http.put(this.apiUrl + `/${selectL}`, postData);
+      return this.http.put(this.apiUrl + `/${select}`, postData);
     }
   }
 

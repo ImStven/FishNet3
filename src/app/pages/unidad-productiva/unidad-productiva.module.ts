@@ -12,11 +12,12 @@ import { MessageService } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { AddEditUnidadpModule } from 'src/app/components/modal/add-edit-unidadp/add-edit-unidadp.module';
-import { FilterUnidadpModule } from 'src/app/components/filtros/filter-unidadp/filter-unidadp.module';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
-    UnidadProductivaComponent
+    UnidadProductivaComponent,
+
   ],
   imports: [
     CommonModule,
@@ -29,8 +30,7 @@ import { FilterUnidadpModule } from 'src/app/components/filtros/filter-unidadp/f
     FormsModule,
     DialogModule,
     AddEditUnidadpModule,
-    FilterUnidadpModule
-    
+    DropdownModule
   ],
   providers: [ConfirmationService,
     MessageService

@@ -1,0 +1,23 @@
+<p-dialog header="{{modalType}} Lote" [(visible)]="displayAddEditModal" [modal]="true" [draggable]="false"
+    [resizable]="false" (onHide)="closeModal()">
+    <form [formGroup]="form" class="lote-form">
+
+        <div class="row">
+            <div class="field">
+                <label class="block" for="tipoAlimento">Tipo Alimento</label>
+                <input class="p-2 rounded-xl border border-gray-500" type="text" pInputText id="tipoAlimento"
+                    formControlName="tipoAlimento">
+                <small class="p-error block" *ngIf="
+    form.controls['tipoAlimento'].invalid &&
+    form.controls['tipoAlimento'].dirty
+    ">Campo requerido *</small>
+            </div>
+
+        </div>
+    </form>
+    <ng-template pTemplate="footer">
+        <p-button class="bg-gray-100 rounded-xl py-3 px-2 mr-2" (click)="closeModal()" label="Cancel"
+            styleClass="p-button-text"></p-button>
+        <p-button (click)="addEditT_Alimento()" label="{{modalType}}" [disabled]="form.invalid"></p-button>
+    </ng-template>
+</p-dialog>
