@@ -13,5 +13,4 @@ export const adminGuard: CanActivateFn = (route, state) => {
         router.navigate(['/welcome']);
         return false;
     }
-
 }
