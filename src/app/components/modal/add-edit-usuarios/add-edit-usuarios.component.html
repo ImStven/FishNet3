@@ -1,92 +1,88 @@
-
-<p-dialog
-    header="{{modalType}} Usuarios"
-    [(visible)]="displayAddEditModal"
-    [modal]="true"
-    [draggable]="false"
-    [resizable]="false"
-    (onHide)="closeModal()"
->
-<form [formGroup]="form" class="especies-form">
-    <div class="row">
-        <div class="field">
-            <label class="block" for="username">Nombre Especie</label>
-            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="username" formControlName="username">
-            <small class="p-error block"
-            *ngIf="
+<p-dialog header="{{modalType}} Usuarios" [(visible)]="displayAddEditModal" [modal]="true" [draggable]="false"
+    [resizable]="false" (onHide)="closeModal()">
+    <form [formGroup]="form" class="especies-form">
+        <div class="row">
+            <div class="field">
+                <label class="block" for="username">Usuario</label>
+                <input class="p-2 rounded-xl border border-gray-500" type="text" pInputText id="username"
+                    formControlName="username">
+                <small class="p-error block" *ngIf="
             form.controls['username'].invalid &&
             form.controls['username'].dirty
             ">Field is required</small>
-        </div>
+            </div>
 
-        <div class="field">
-            <label class="block" for="nombre">Nombre Especie</label>
-            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="nombre" formControlName="nombre">
-            <small class="p-error block"
-            *ngIf="
+            <div class="field">
+                <label class="block" for="nombre">Nombre</label>
+                <input class="p-2 rounded-xl border border-gray-500" type="text" pInputText id="nombre"
+                    formControlName="nombre">
+                <small class="p-error block" *ngIf="
             form.controls['nombre'].invalid &&
             form.controls['nombre'].dirty
             ">Field is required</small>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="field">
-            <label class="block" for="apellido">Apellido</label>
-            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="apellido" formControlName="apellido">
-            <small class="p-error block"
-            *ngIf="
+        <div class="row">
+            <div class="field">
+                <label class="block" for="apellido">Apellido</label>
+                <input class="p-2 rounded-xl border  border-gray-500" type="text" pInputText id="apellido"
+                    formControlName="apellido">
+                <small class="p-error block" *ngIf="
             form.controls['apellido'].invalid &&
             form.controls['apellido'].dirty
             ">Field is required</small>
-        </div>
+            </div>
 
-        <div class="field">
-            <label class="block" for="telefono">Teléfono</label>
-            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="telefono" formControlName="telefono">
-            <small class="p-error block"
-            *ngIf="
+            <div class="field">
+                <label class="block" for="telefono">Teléfono</label>
+                <input class="p-2 rounded-xl border  border-gray-500" type="text" pInputText id="telefono"
+                    formControlName="telefono">
+                <small class="p-error block" *ngIf="
             form.controls['telefono'].invalid &&
             form.controls['telefono'].dirty
             ">Field is required</small>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-                <div class="field">
-            <label class="block" for="email">Correo</label>
-            <input class="p-2 rounded-xl border border border-gray-500"type="text" pInputText id="email" formControlName="email">
-            <small class="p-error block"
-            *ngIf="
+        <div class="row">
+            <div class="field">
+                <label class="block" for="email">Correo</label>
+                <input class="p-2 rounded-xl border  border-gray-500" type="text" pInputText id="email"
+                    formControlName="email">
+                <small class="p-error block" *ngIf="
             form.controls['email'].invalid &&
             form.controls['email'].dirty
             ">Field is required</small>
+            </div>
+            <div class="field">
+                <label class="block" for="email">Contraseña</label>
+                <input class="p-2 rounded-xl border  border-gray-500" type="text" pInputText id="password"
+                    formControlName="password">
+                <small class="p-error block" *ngIf="
+            form.controls['password'].invalid &&
+            form.controls['password'].dirty
+            ">Field is required</small>
+            </div>
         </div>
-
-        <div class="field">
-        <label class="block" for="rol">Roles</label>
-        <select class="select" name="rol" type="text" formControlName="rol">
-            <option >Seleccionar una Opcion</option>
-            <option *ngFor="let roles of rol" [value]="roles.id">{{roles.name}}</option>
-        </select>
-        <small class="p-error block"
-        *ngIf="
+            <div class="row">
+                <div class="field">
+                    <label class="block" for="rol">Roles</label>
+                    <select class="select" name="rol" type="text" formControlName="rol">
+                        <option>Seleccionar una Opcion</option>
+                        <option *ngFor="let roles of rol" [value]="roles.id">{{roles.name}}</option>
+                    </select>
+                    <small class="p-error block" *ngIf="
         form.controls['roles'].invalid &&
         form.controls['roles'].dirty
         ">Field is required</small>
-    </div>
-
-    </div>
-</form>
-<ng-template pTemplate="footer">
-    <p-button
-    class="bg-gray-100 rounded-xl py-3 px-2 mr-2"
-    (click)="closeModal()"
-    label="Cancel"
-    styleClass="p-button-text"></p-button>
-    <p-button
-    (click)="addEditUsuarios()"
-    label="{{modalType}}"
-    [disabled]="form.invalid"></p-button>
-</ng-template>
+                </div>
+            </div>
+       
+    </form>
+    <ng-template pTemplate="footer">
+        <p-button class="bg-gray-100 rounded-xl py-3 px-2 mr-2" (click)="closeModal()" label="Cancel"
+            styleClass="p-button-text"></p-button>
+        <p-button (click)="addEditUsuarios()" label="{{modalType}}" [disabled]="form.invalid"></p-button>
+    </ng-template>
 </p-dialog>

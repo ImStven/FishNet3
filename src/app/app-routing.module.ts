@@ -14,25 +14,28 @@ import { MortalidadComponent } from './pages/mortalidad/mortalidad.component';
 import { InvAlimentoComponent } from './pages/inv-alimento/inv-alimento.component';
 import { EntradaAlimentoComponent } from './pages/inv-alimento/entrada-alimento/entrada-alimento.component';
 import { SalidaAlimentoComponent } from './pages/inv-alimento/salida-alimento/salida-alimento.component';
+import { MuestreoComponent } from './pages/muestreo/muestreo.component';
+import { adminGuard } from './components/services/guards/admin.guard';
+import { loginGuard } from './components/services/guards/login.guard';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'welcome', component: WelcomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [authGuard, adminGuard] },
   { path: 'lote', component: LoteComponent, canActivate: [authGuard] },
+  { path: 'pesca', component: PescaComponent, canActivate: [authGuard] },
+  { path: 'muestreo', component: MuestreoComponent, canActivate: [authGuard] },
+  { path: 'mortalidad', component: MortalidadComponent, canActivate: [authGuard] },
   { path: 'unidad-productiva', component: UnidadProductivaComponent, canActivate: [authGuard] },
   { path: 'proveedor', component: ProveedorComponent, canActivate: [authGuard] },
   { path: 'especies', component: EspeciesComponent, canActivate: [authGuard] },
-  { path: 'usuarios', component: UsuariosComponent, canActivate: [authGuard] },
   { path: 'inventario', component: InvAlimentoComponent, canActivate: [authGuard] },
   { path: 'entrada-alimentos', component: EntradaAlimentoComponent, canActivate: [authGuard] },
   { path: 'salida-alimentos', component: SalidaAlimentoComponent, canActivate: [authGuard] },
-  { path: 'pesca', component: PescaComponent, canActivate: [authGuard] },
-  { path: 'mortalidad', component: MortalidadComponent, canActivate: [authGuard] },
 ];
-
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

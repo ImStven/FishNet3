@@ -23,6 +23,7 @@ import { MortalidadModule } from './pages/mortalidad/mortalidad.module';
 import { PescaModule } from './pages/pesca/pesca.module';
 import { HomeComponent } from './pages/home/home.component';
 import { TipoAlimentoModule } from './pages/tipo-alimento/tipo-alimento.module';
+import { MuestreoModule } from './pages/muestreo/muestreo.module';
 
 
 
@@ -32,7 +33,7 @@ import { TipoAlimentoModule } from './pages/tipo-alimento/tipo-alimento.module';
   declarations: [
     AppComponent,
     WelcomeComponent,
-    HomeComponent
+    HomeComponent,
 
   ],
   imports: [
@@ -50,7 +51,8 @@ import { TipoAlimentoModule } from './pages/tipo-alimento/tipo-alimento.module';
     InvAlimentoModule,
     MortalidadModule,
     PescaModule,
-    TipoAlimentoModule
+    TipoAlimentoModule,
+    MuestreoModule
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

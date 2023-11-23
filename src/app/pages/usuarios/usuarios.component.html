@@ -26,7 +26,7 @@
                 <td class="border-2">{{usuario.apellido}}</td>
                 <td class="border-2">{{usuario.telefono}}</td>
                 <td class="border-2">{{usuario.email}}</td>
-                <td class="border-2">{{usuario.roles.name}}</td>
+                <td class="border-2">{{usuario.roles[0].name}}</td>
                 <td class="border-2">
                     <button pButton icon="pi pi-pencil" class="bg-cyan-600 text-white p-button-rounded mr-2"
                         (click)="showEdit(usuario.id)"></button>

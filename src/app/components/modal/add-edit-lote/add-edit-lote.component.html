@@ -37,7 +37,7 @@
                 <select class="p-2 rounded-xl border " class="select" name="proveedor" type="text"
                     formControlName="proveedor">
                     <option>Seleccionar una Opcion</option>
-                    <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{proveedor.nombre}}</option>
+                    <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{proveedor.razonSocial}}</option>
                 </select>
             </div>
             <!-- <p-treeSelect class="md:w-20rem w-full" containerStyleClass="w-full" formControlName="proveedor" [options]="selectedLote.proveedor"></p-treeSelect> -->

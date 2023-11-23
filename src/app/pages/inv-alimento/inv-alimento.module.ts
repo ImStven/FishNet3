@@ -20,10 +20,10 @@ import { InvAlimentoComponent } from './inv-alimento.component';
 
 @NgModule({
   declarations: [
+    InvAlimentoComponent,
     EntradaAlimentoComponent,
-    SalidaAlimentoComponent,
-    InvAlimentoComponent
-    
+    SalidaAlimentoComponent
+
   ],
   imports: [
     CommonModule,
@@ -36,8 +36,9 @@ import { InvAlimentoComponent } from './inv-alimento.component';
     ButtonModule,
     BrowserAnimationsModule,
     DialogModule,
-    AddEditInvAlimentoModule,
     RouterModule,
+    AddEditInvAlimentoModule,
+    
 
   ],
   providers: [ConfirmationService,

@@ -1,20 +1,17 @@
 <div class="text-gray-800 flex justify-end">
     <a [routerLink]="['/pesca']" class=" text-white border-2 rounded px-2 py-2 border-gray-600  font-bold text-[15px] mr-2 hover:bg-gray-600 hover:border-white">Pesca</a>
     <a [routerLink]="['/mortalidad']" class=" text-white border-2 rounded  px-2 py-2 border-gray-600 font-bold text-[15px] mr-2 hover:bg-gray-600  hover:border-white">Mortalidad</a>
+    <a [routerLink]="['/muestreo']" class=" text-white border-2 rounded  px-2 py-2 border-gray-600 font-bold text-[15px] mr-2 hover:bg-gray-600  hover:border-white">Muestreo</a>
   </div>
 
 <div class="card">
 <div class="justify-content-between">
-    <div class="h1 bg-gray-500 border-3 border-gray-400">Lote</div>
+    <div class="h1 bg-gray-500 border-3 border-gray-400">Muestreo</div>
 </div>
 
-<p-table class="border-3 border-gray-400" [value]="lotes" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15 ]">
+<p-table class="border-3 border-gray-400" [value]="muestreo" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15 ]">
  <ng-template pTemplate="caption">
             <div class="flex items-center space-x-3"> <!-- Utilizando space-x-3 para agregar espacio entre elementos -->
-                  <label for="fechaFiltro">Filtrar por Fecha:</label>
-                  <input class="p-2 rounded-xl  border border-gray-500" type="date" id="fechaFiltro" [(ngModel)]="fechaFiltro">
-                  <p-button class="bg-[#EC6708] rounded-xl text-white py-2 px-2 hover:scale-105 duration-300" (click)="filtro()">Filtrar</p-button>
-                  <p-button class="bg-gray-400 rounded-xl  py-2 px-2 hover:scale-105 duration-300" (click)="borrarBusqueda()">Borrar</p-button>
                 <p-button class="bg-[#EC6708] rounded-xl text-white py-2 px-2 hover:scale-105 duration-300 ml-auto"
                           label="Registrar" (click)="showAddModal()"></p-button> <!-- Utilizando ml-auto para moverlo a la derecha -->
               </div>
@@ -23,47 +20,35 @@
         <tr class="border-2 border-gray-300 w-6/12">
             <th class="border-2">N°</th>
             <th class="border-2">Nombre Lote</th>
-            <th class="border-2">Fecha de Siembra</th>
-            <th class="border-2">Días Cultivados</th>
-            <th class="border-2">Animales Iniciales</th>
-            <th class="border-2">Número Animales</th>
-            <th class="border-2">Proveedor</th>
-            <th class="border-2">Especie</th>
-            <th class="border-2">Unidad Productiva</th>
-            <th class="border-2">Opciones</th>
+            <th class="border-2">Peso Inicial</th>
+            <th class="border-2">Peso Actual</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-lote let-rowIndex="rowIndex">
+    <ng-template pTemplate="body" let-muestreo let-rowIndex="rowIndex">
         <tr  class="hover:bg-gray-300 cursor-pointer duration-300">
             <td class="border-2">{{rowIndex + 1}}</td>
-            <td class="border-2">{{ lote.nombreLote }}</td>
-            <td class="border-2">{{ lote.fechaCreacion }}</td>
-            <td class="border-2">{{ lote.diasDeSiembra }}</td>
-            <td class="border-2">{{ lote.animalesInicial }}</td>
-            <td class="border-2">{{ lote.numeroAnimales }}</td>
-            <td class="border-2">{{ lote.proveedor.razonSocial }}</td>
-            <td class="border-2">{{ lote.especies.nombreEspecie }}</td>
-            <td class="border-2">{{ lote.unidadProductiva.nombreUnidadP }}</td>
+            <td class="border-2">{{ muestreo.pesoInicial }}</td>
+            <td class="border-2">{{ muestreo.lote.nombreLote }}</td>
             
             <td class="border-2">
                 <button pButton icon="pi pi-pencil" class="bg-cyan-600 text-white p-button-rounded mr-2"
-                (click)="showEdit(lote.id)"
+                (click)="showEdit(muestreo.id)"
                 ></button>
                 <button pButton icon="pi pi-trash" class="bg-red-500 text-white p-button-rounded p-button-danger"
-                    (click)="eliminar(lote.id)"
+                    (click)="eliminar(muestreo.id)"
                     ></button>
             </td>
         </tr>
     </ng-template>
 </p-table>
 
-<app-add-edit-lote
+<!-- <app-add-edit-muestreo
 *ngIf="displayAddEditModal"
 [displayAddEditModal]="displayAddEditModal"
-[selectedLote]="selectedLote"
+[selected]="selected"
 (clickClose)="hideAddModal($event)"
 (clickAddEdit)="guardaroEditarLoteList($event)"
-></app-add-edit-lote>
+></app-add-edit-muestreo> -->
 <p-confirmDialog header="Delete"></p-confirmDialog>
 <p-toast position="bottom-right"></p-toast>
 </div>

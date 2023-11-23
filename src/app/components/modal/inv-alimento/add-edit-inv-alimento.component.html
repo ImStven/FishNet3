@@ -5,7 +5,7 @@
         <div class="row">
             <div class="field">
                 <label class="block" for="numeroFactura">Numero de Factura</label>
-                <input type="text" pInputText id="numeroFactura" formControlName="numeroFactura">
+                <input class="p-2 rounded-xl border border-gray-500" type="text" pInputText id="numeroFactura" formControlName="numeroFactura">
                     <small class="p-error block" *ngIf="
                     form.controls['numeroFactura'].invalid &&
                     form.controls['numeroFactura'].dirty
@@ -14,7 +14,7 @@
 
             <div class="field">
                 <label class="block" for="numeroKilos">Numero de Kilos</label>
-                <input class="p-2 rounded-xl border border border-gray-500" name="numeroKilos" type="text" pInputText id="numeroKilos"
+                <input class="p-2 rounded-xl border border-gray-500" name="numeroKilos" type="text" pInputText id="numeroKilos"
                     formControlName="numeroKilos">
                 <small class="p-error block" *ngIf="
                     form.controls['numeroKilos'].invalid &&
@@ -40,4 +40,4 @@
     styleClass="p-button-text"></p-button>
         <p-button (click)="addEditInventario()" label="{{modalType}}" [disabled]="form.invalid"></p-button>
     </ng-template>
-</p-dialog><p>add-edit-inv-alimento works!</p>
+</p-dialog>

@@ -13,6 +13,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { MortalidadComponent } from './mortalidad.component';
 import { AddEditMortalidadModule } from "../../components/modal/add-edit-mortalidad/add-edit-mortalidad.module";
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AddEditMortalidadModule } from "../../components/modal/add-edit-mortali
         ButtonModule,
         BrowserAnimationsModule,
         DialogModule,
-        AddEditMortalidadModule
+        AddEditMortalidadModule,
+        RouterModule
     ]
 })
 export class MortalidadModule { }

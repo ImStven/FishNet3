@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from './components/services/auth/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Usuarios } from './components/models/usuarios';
+import { Observable } from 'rxjs';
 
 
 interface SideNavToggle {
@@ -33,8 +34,9 @@ export class AppComponent {
     this.isSideNavCollapsed = data.collapsed;
   }
 
-  logout(){
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
+  // logout(){
+  //   this.authService.logout();
+  //   this.router.navigate(['/login']);
+  // }
+
 }

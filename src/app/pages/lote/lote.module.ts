@@ -15,6 +15,7 @@ import { DialogModule } from 'primeng/dialog';
 import { AddEditLoteModule } from 'src/app/components/modal/add-edit-lote/add-edit-lote.module';
 
 import { LoteComponent } from './lote.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     LoteComponent,
@@ -31,7 +32,8 @@ import { LoteComponent } from './lote.component';
     ButtonModule,
     BrowserAnimationsModule,
     DialogModule,
-    AddEditLoteModule
+    AddEditLoteModule,
+    RouterModule
 
   ],
   providers: [ConfirmationService,

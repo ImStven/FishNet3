@@ -13,6 +13,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { PescaComponent } from './pesca.component';
 import { AddEditPescaModule } from "../../components/modal/add-edit-pesca/add-edit-pesca.module";
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { AddEditPescaModule } from "../../components/modal/add-edit-pesca/add-ed
         ButtonModule,
         BrowserAnimationsModule,
         DialogModule,
-        AddEditPescaModule
+        AddEditPescaModule,
+        RouterModule
     ],
     providers: [
         ConfirmationService,

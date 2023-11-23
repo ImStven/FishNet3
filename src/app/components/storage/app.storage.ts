@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 
 
@@ -7,9 +8,10 @@ import { Injectable } from '@angular/core';
 })
 
 export class AppStorage {
-
+  token$ = new BehaviorSubject<string | undefined>(undefined);
 
   setToken(token: string) {
+    this.token$.next(token);
     localStorage.setItem("token", token);
   }
 
@@ -27,11 +29,13 @@ export class AppStorage {
 
   clear() {
     localStorage.clear();
+    this.token$.next(undefined);
   }
 
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    this.token$.next(undefined);
     return true;
   }
 
