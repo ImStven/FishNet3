@@ -17,6 +17,7 @@ export class LoteComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   LSubscription: Subscription = new Subscription();
   fechaFiltro:Date | null = null;
+  nombreFiltro: string = '';
 
   constructor(
     private loteService: LoteService,
@@ -89,12 +90,17 @@ export class LoteComponent implements OnInit, OnDestroy {
   }
 
   filtro(){
-    if(this.fechaFiltro){
-      this.lotes = this.lotes.filter(u => u.fechaCreacion === this.fechaFiltro)
-    }else {
-      this.obtenerLote()
-    }
+    if(this.fechaFiltro || this.nombreFiltro){
+      this.lotes = this.lotes.filter((lote) => {
+          const fechaMatch = !this.fechaFiltro || lote.fechaCreacion === this.fechaFiltro;
+          const nombreMatch = !this.nombreFiltro || lote.nombreLote.toLowerCase().includes(this.nombreFiltro.toLowerCase());
+          return fechaMatch && nombreMatch;
+    });
+  }else{
+    this.obtenerLote();
   }
+}
+  
 
 
   borrarBusqueda() {
@@ -102,5 +108,6 @@ export class LoteComponent implements OnInit, OnDestroy {
     this.obtenerLote();
     // Limpia la fecha de filtro
     this.fechaFiltro = null;
+    this.nombreFiltro = '';
   }
 }

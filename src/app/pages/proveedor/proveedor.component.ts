@@ -17,6 +17,7 @@ export class ProveedorComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   PSubscription: Subscription = new Subscription();
   fechaFiltro:Date | null = null;
+  nombreFiltro: string = '';
 
   constructor(
     private proveedorService: ProveedorService,
@@ -90,12 +91,16 @@ eliminar(id: number): void{
   }
 
   filtro(){
-    if(this.fechaFiltro){
-      this.proveedores = this.proveedores.filter(u => u.fechaCreacion === this.fechaFiltro)
-    }else {
-      this.obtenerProveedor()
-    }
+    if(this.fechaFiltro || this.nombreFiltro){
+      this.proveedores = this.proveedores.filter((proveedor) => {
+          const fechaMatch = !this.fechaFiltro || proveedor.fechaCreacion === this.fechaFiltro;
+          const nombreMatch = !this.nombreFiltro || proveedor.razonSocial.toLowerCase().includes(this.nombreFiltro.toLowerCase());
+          return fechaMatch && nombreMatch;
+    });
+  }else{
+    this.obtenerProveedor();
   }
+}
 
 
   borrarBusqueda() {

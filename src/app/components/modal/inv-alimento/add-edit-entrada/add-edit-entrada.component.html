@@ -5,7 +5,7 @@
         <div class="row">
             <div class="field">
                 <label class="block" for="numeroFactura">Numero de Factura</label>
-                <input class="p-2 rounded-xl border border border-gray-500" type="text" pInputText id="numeroFactura" formControlName="numeroFactura">
+                <input class="p-2 rounded-xl border border-gray-500" type="text" pInputText id="numeroFactura" formControlName="numeroFactura">
                 <small class="p-error block" *ngIf="
                 form.controls['numeroFactura'].invalid &&
                 form.controls['numeroFactura'].dirty
@@ -13,8 +13,9 @@
             </div>
             
             <div class="field">
-                <label class="block" for="fechaVencimiento">Fecha de Siembra</label>
-                <input class="p-2 rounded-xl border border border-gray-500" type="date" pInputText id="fechaVencimiento" formControlName="fechaVencimiento">
+                <label class="block" for="fechaVencimiento">Fecha de Vencimiento</label>
+                <input class="p-2 rounded-xl border border-gray-500" type="date" pInputText id="fechaVencimiento" formControlName="fechaVencimiento"
+                [max]="ahora" [(ngModel)]="fIngreso" (ngModelChange)="cambioFecha">
                 <small class="p-error block" *ngIf="
             form.controls['fechaVencimiento'].invalid &&
             form.controls['fechaVencimiento'].dirty
@@ -24,7 +25,7 @@
             <div class="row">
             <div class="field">
                 <label class="block" for="registroIca">Registro ICA</label>
-                <input class="p-2 rounded-xl border border border-gray-500" name="registroIca" type="text" pInputText id="registroIca"
+                <input class="p-2 rounded-xl border border-gray-500" name="registroIca" type="text" pInputText id="registroIca"
                     formControlName="registroIca">
                 <small class="p-error block" *ngIf="
                     form.controls['registroIca'].invalid &&
@@ -34,7 +35,7 @@
 
             <div class="field">
                 <label class="block" for="numeroKilos">Numero de Kilos</label>
-                <input class="p-2 rounded-xl border border border-gray-500" name="numeroKilos" type="text" pInputText id="numeroKilos"
+                <input class="p-2 rounded-xl border border-gray-500" name="numeroKilos" type="text" pInputText id="numeroKilos"
                     formControlName="numeroKilos">
                 <small class="p-error block" *ngIf="
                     form.controls['numeroKilos'].invalid &&

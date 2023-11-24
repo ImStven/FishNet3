@@ -14,7 +14,8 @@
             </div>
             <div class="field">
                 <label class="block" for="fechaSiembra">Fecha de Siembra</label>
-                <input class="p-2 rounded-xl  border border-gray-500" type="date" pInputText id="fechaSiembra" formControlName="fechaSiembra">
+                <input class="p-2 rounded-xl  border border-gray-500" type="date" pInputText id="fechaSiembra" formControlName="fechaSiembra"
+                [max]="ahora" [(ngModel)]="fIngreso" (ngModelChange)="cambioFecha">
                 <small class="p-error block" *ngIf="
             form.controls['fechaSiembra'].invalid &&
             form.controls['fechaSiembra'].dirty
@@ -47,7 +48,7 @@
         <div class="row">
             <div class="field">
                 <label for="especies">Especies</label>
-                <select class="p-2 rounded-xl border border border-gray-500" class="select" name="especies" type="text"
+                <select class="p-2 rounded-xl border  border-gray-500" class="select" name="especies" type="text"
                     formControlName="especies">
                     <option>Seleccionar una Opcion</option>
                     <option *ngFor="let especie of especies" [value]="especie.id">{{especie.nombreEspecie}}</option>
@@ -55,7 +56,7 @@
             </div>
             <div class="field">
                 <label for="unidadProductiva">Unidad Productiva</label>
-                <select class="p-2 rounded-xl border border border-gray-500" class="select" name="unidadProductiva" type="text"
+                <select class="p-2 rounded-xl border  border-gray-500" class="select" name="unidadProductiva" type="text"
                     formControlName="unidadProductiva">
                     <option>Seleccionar una Opcion</option>
                     <option *ngFor="let unidadP of unidadProductiva" [value]="unidadP.id">{{unidadP.nombreUnidadP}}

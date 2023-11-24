@@ -8,6 +8,7 @@ import { UnidadProductiva } from '../../models/unidad-productiva';
 import { ProveedorService } from '../../services/proveedor.service';
 import { EspeciesService } from '../../services/especies.service';
 import { UnidadProductivaService } from '../../services/unidad-productiva.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -21,6 +22,11 @@ export class AddEditLoteComponent implements OnInit, OnChanges {
   proveedores: Proveedor[] = [];
   especies: Especies[] = [];
   unidadProductiva: UnidadProductiva[] = [];
+
+  //fecha
+  ahora: any;
+  deshabilitar: any;
+  fIngreso: string;
 
   @Input() displayAddEditModal: boolean = true;
   @Input() selectedLote: any = null;
@@ -53,6 +59,9 @@ export class AddEditLoteComponent implements OnInit, OnChanges {
     this.getEspecies();
     this.obtenerLote();
     
+
+    const date = new DatePipe('en-us')
+    this.ahora = date.transform(new Date(), 'yyyy-MM-dd')
   }
 
   ngOnChanges(): void {
@@ -84,6 +93,10 @@ export class AddEditLoteComponent implements OnInit, OnChanges {
     }
   }
 
+  //fecha
+  cambioFecha(){
+    this.deshabilitar = this.fIngreso
+  }
   addEditLote(){
     const loteData = {
       nombreLote: this.form.get('nombreLote')?.value,
@@ -105,7 +118,7 @@ export class AddEditLoteComponent implements OnInit, OnChanges {
         this.clickAddEdit.emit(response);
         this.closeModal();
         const msg = this.modalType === 'Guardar' ? 'Registro Guardado' : 'Registro Actualizado';
-        this.messageService.add({severity: 'success', summary: 'Success', detail: msg});
+        this.messageService.add({severity: 'success', summary: 'Exitoso', detail: msg});
         console.log(this.modalType);
         
       },

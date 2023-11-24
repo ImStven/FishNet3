@@ -19,7 +19,7 @@ export class EspeciesComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   EsSubscription: Subscription = new Subscription();
   fechaFiltro:Date | null = null;
-
+  nombreFiltro: string = '';
 
   constructor(
     private especiesService: EspeciesService,
@@ -95,12 +95,16 @@ export class EspeciesComponent implements OnInit, OnDestroy {
   }
 
   filtro(){
-    if(this.fechaFiltro){
-      this.especie = this.especie.filter(u => u.fechaCreacion === this.fechaFiltro)
-    }else {
-      this.obtenerEspecies()
-    }
+    if(this.fechaFiltro || this.nombreFiltro){
+      this.especie = this.especie.filter((especie) => {
+          const fechaMatch = !this.fechaFiltro || especie.fechaCreacion === this.fechaFiltro;
+          const nombreMatch = !this.nombreFiltro || especie.nombreEspecie.toLowerCase().includes(this.nombreFiltro.toLowerCase());
+          return fechaMatch && nombreMatch;
+    });
+  }else{
+    this.obtenerEspecies();
   }
+}
 
 
   borrarBusqueda() {

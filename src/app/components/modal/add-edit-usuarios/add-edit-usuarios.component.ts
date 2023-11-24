@@ -4,6 +4,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { MessageService } from 'primeng/api';
 import { RolesService } from '../../services/roles.service';
 import { Roles } from '../../models/roles';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-add-edit-usuarios',
@@ -73,11 +74,14 @@ export class AddEditUsuariosComponent implements OnInit, OnChanges {
 
 
   addEditUsuarios(){
+    const password = this.form.get('password')?.value;
+
+    const hashedPassword = CryptoJS.SHA256(password ?? '').toString();
     const usersData = {
       username: this.form.get('username')?.value,
       nombre: this.form.get('nombre')?.value,
       apellido: this.form.get('apellido')?.value,
-      password: this.form.get('password')?.value,
+      password: hashedPassword,
       telefono: this.form.get('telefono')?.value,
       email: this.form.get('email')?.value,
       roles: {

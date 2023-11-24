@@ -7,6 +7,7 @@ import { Proveedor } from 'src/app/components/models/proveedor';
 import { TipoAlimento } from 'src/app/components/models/tipo-alimento';
 import { ProveedorService } from 'src/app/components/services/proveedor.service';
 import { TipoAlimentoService } from 'src/app/components/services/tipo-alimento.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-edit-entrada',
@@ -17,6 +18,11 @@ export class AddEditEntradaComponent {
 
   proveedores: Proveedor[] = [];
   tipoAlimentos: TipoAlimento[] = [];
+
+
+  ahora: any;
+  deshabilitar: any;
+  fIngreso: string;
 
   @Input() displayAddEditModal: boolean = true;
   @Input() selectedEntrada: any = null;
@@ -45,6 +51,9 @@ export class AddEditEntradaComponent {
     this.obtenerEntradaAlimentos();
     this.getProveedor();
     this.getTipoAlimento();
+
+    const date = new DatePipe('en-us')
+    this.ahora = date.transform(new Date(), 'yyyy-MM-dd')
   }
 
   ngOnChanges(): void {
@@ -105,6 +114,9 @@ export class AddEditEntradaComponent {
     )
   }
 
+  cambioFecha(){
+    this.deshabilitar = this.fIngreso
+  }
   getProveedor(){
     this.provedorService.obtenerProveedor().subscribe(
       response => {

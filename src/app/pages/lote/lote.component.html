@@ -11,8 +11,10 @@
 <p-table class="border-3 border-gray-400" [value]="lotes" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15 ]">
  <ng-template pTemplate="caption">
             <div class="flex items-center space-x-3"> <!-- Utilizando space-x-3 para agregar espacio entre elementos -->
+                <label for="nombreFiltro">Filtrar por Nombre:</label>
+                <input class="p-2 rounded-xl border border-gray-500" type="text" id="nombreFiltro" [(ngModel)]="nombreFiltro" (input)="filtro()">
                   <label for="fechaFiltro">Filtrar por Fecha:</label>
-                  <input class="p-2 rounded-xl  border border-gray-500" type="date" id="fechaFiltro" [(ngModel)]="fechaFiltro">
+                  <input class="p-2 rounded-xl  border border-gray-500" type="date" id="fechaFiltro" [(ngModel)]="fechaFiltro" (input)="filtro()">
                   <p-button class="bg-[#EC6708] rounded-xl text-white py-2 px-2 hover:scale-105 duration-300" (click)="filtro()">Filtrar</p-button>
                   <p-button class="bg-gray-400 rounded-xl  py-2 px-2 hover:scale-105 duration-300" (click)="borrarBusqueda()">Borrar</p-button>
                 <p-button class="bg-[#EC6708] rounded-xl text-white py-2 px-2 hover:scale-105 duration-300 ml-auto"

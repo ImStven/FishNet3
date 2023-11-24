@@ -57,7 +57,7 @@
             </div>
             <div class="field">
                 <label class="block" for="email">Contraseña</label>
-                <input class="p-2 rounded-xl border  border-gray-500" type="text" pInputText id="password"
+                <input class="p-2 rounded-xl border  border-gray-500" type="password" pInputText id="password"
                     formControlName="password">
                 <small class="p-error block" *ngIf="
             form.controls['password'].invalid &&
@@ -67,8 +67,8 @@
         </div>
             <div class="row">
                 <div class="field">
-                    <label class="block" for="rol">Roles</label>
-                    <select class="select" name="rol" type="text" formControlName="rol">
+                    <label class="block" for="roles">Roles</label>
+                    <select class="select" name="roles" type="text" formControlName="roles">
                         <option>Seleccionar una Opcion</option>
                         <option *ngFor="let roles of rol" [value]="roles.id">{{roles.name}}</option>
                     </select>

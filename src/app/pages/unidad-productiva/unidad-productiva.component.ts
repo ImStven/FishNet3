@@ -17,6 +17,7 @@ export class UnidadProductivaComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   UpSubscription: Subscription = new Subscription();
   fechaFiltro:Date | null = null;
+  nombreFiltro: string = '';
 
 
   constructor(
@@ -90,13 +91,16 @@ export class UnidadProductivaComponent implements OnInit, OnDestroy {
   }
 
   filtro(){
-      if(this.fechaFiltro){
-        this.unidad = this.unidad.filter(u => u.fechaCreacion === this.fechaFiltro)
-      }else {
-        this.obtenerUnidadProductiva()
-      }
-    }
-
+    if(this.fechaFiltro || this.nombreFiltro){
+      this.unidad = this.unidad.filter((unidad) => {
+          const fechaMatch = !this.fechaFiltro || unidad.fechaCreacion === this.fechaFiltro;
+          const nombreMatch = !this.nombreFiltro || unidad.nombreUnidadP.toLowerCase().includes(this.nombreFiltro.toLowerCase());
+          return fechaMatch && nombreMatch;
+    });
+  }else{
+    this.obtenerUnidadProductiva();
+  }
+}
 
     borrarBusqueda() {
       // Restaura la lista completa de unidades
